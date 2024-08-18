@@ -14,7 +14,7 @@ def fit_text_to_width_height(c, text, x, y, max_width, font_name, max_font_size)
     text_width = c.stringWidth(text, font_name, font_size)
 
     while text_width > max_width and font_size > 0:
-        font_size -= 1
+        font_size -= 0.1
         c.setFont(font_name, font_size)
         text_width = c.stringWidth(text, font_name, font_size)
     
