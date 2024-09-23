@@ -6,20 +6,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 import pandas as pd
 
-# 文字列の幅を先に指定して、フォントサイズを変えるための関数。名前のサイズ調整に利用できる。
-def fit_text_to_width_height(c, text, x, y, max_width, font_name, max_font_size):
-    font_size = max_font_size
-    c.setFont(font_name, font_size)
-
-    text_width = c.stringWidth(text, font_name, font_size)
-
-    while text_width > max_width and font_size > 0:
-        font_size -= 0.1
-        c.setFont(font_name, font_size)
-        text_width = c.stringWidth(text, font_name, font_size)
-    
-    c.drawString(x, y, text)
-
+from function import fit_text_to_width_height
 
 def draw_card(c, x, y, name, furigana, title, bg_image):
     # 背景画像を描く。A4の8分割よりも小さいことを想定している（横長）
