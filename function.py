@@ -1,10 +1,5 @@
-from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.pdfbase import pdfmetrics
-
 # 文字列の幅を先に指定して、フォントサイズを変えるための関数。名前のサイズ調整に利用できる。
-def fit_text_to_width_height(c, text, x, y, max_width, font_name, max_font_size):
+def fit_text_to_width(c, text, x, y, max_width, font_name, max_font_size):
     font_size = max_font_size
     c.setFont(font_name, font_size)
 
@@ -18,7 +13,7 @@ def fit_text_to_width_height(c, text, x, y, max_width, font_name, max_font_size)
     c.drawString(x, y, text)
 
 # 長方形の中に、文章を適切に配置してくれる関数。左揃え、中揃え
-def fit_text_to_width_height_ver2(c, text, x, y, max_width, max_height, font_name, max_font_size):
+def fit_text_to_width_height(c, text, x, y, max_width, max_height, font_name, max_font_size):
     font_size = max_font_size
     c.setFont(font_name, font_size)
 
