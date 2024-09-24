@@ -24,6 +24,13 @@ csv形式のデータから、自己紹介カードを作る。一人あたり1�
 - `introduce.png`が自己紹介カードの背景
 - 自己紹介の内容に合わせて、`draw_introduce_card()`のコードを変更する
 
+`generate_self_introduction_cards_pmg(output_folder_path, data, bg_image_path)`
+
+- pdfファイルではなくpngファイルで出力するためのもの
+- `PngCards`というフォルダ¥の中にpngを作成
+- 結構時間がかかる
+- poppler というツールが必要。mac なら `brew install poppler` でできる。windowsなら、調べてダウンロード
+
 # その他関数
 `fit_text_to_width(c, text, x, y, max_width, font_name, max_font_size)`
 
