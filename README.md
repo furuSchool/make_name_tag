@@ -56,7 +56,7 @@ csv形式のデータから、自己紹介カードを作る。1人あたり1ペ
 `generate_self_introduction_cards_pmg(output_folder_path, data, bg_image_path)`
 
 - pdfファイルではなくpngファイルで出力するためのもの
-- `PngCards`というフォルダ¥の中にpngを作成
+- `PngCards`というフォルダの中にpngを作成
 - 結構時間がかかる
 - poppler というツールが必要。mac なら `brew install poppler` でできる。windowsなら、調べてダウンロード
 - I LOVE PDF を使って、pdfデータをpngデータにするのが吉かも
