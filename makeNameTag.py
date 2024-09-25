@@ -6,7 +6,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 import pandas as pd
 
-from function import fit_text_to_width
+from function import fit_text_to_width, fit_text_to_width_height_2
 
 def draw_business_card(c, x, y, name, furigana, title, bg_image):
     # 背景画像を描く。A4の8分割よりも小さいことを想定している（横長）
@@ -15,14 +15,9 @@ def draw_business_card(c, x, y, name, furigana, title, bg_image):
     # テキストの色を設定
     c.setFillColor(colors.black)
 
-    # 肩書きの分解（長い人向け。名刺の背景によっては1行や3行以上の方が良い場合も）
-    title1 = title[0:15]
-    title2 = title[15:30]
-
+    # c.rect(x + 90, y + card_height - 60,190,40)
     # 名刺の背景によって文字のサイズを変える。
-    c.setFont("ipaexm", 12)
-    c.drawString(x + 90, y + card_height - 40, title1)
-    c.drawString(x + 100, y + card_height - 60, title2)
+    fit_text_to_width_height_2(c, title, x + 90, y + card_height - 60,190,40, "ipaexm", 18)
     fit_text_to_width(c, furigana, x + 120, y + card_height - 90, 150, "ipaexm", 15)
     fit_text_to_width(c, name, x + 110, y + card_height - 130, 170, "ipaexm", 40)
 
@@ -56,6 +51,6 @@ def generate_business_cards(output_pdf, data, bg_image_path):
     # PDFを保存
     c.save()
 
-data = pd.read_csv('name_tag.csv')
+data = pd.read_csv('name_tag.csv',header=None)
 data.columns = ['title', 'name', 'furigana']
 generate_business_cards("name_tag.pdf", data, "name_tag.png")
