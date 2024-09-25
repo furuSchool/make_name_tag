@@ -27,10 +27,25 @@ csv形式のデータから、A4サイズのネームプレートを作る。
 - 苗字と名前はあらかじめスペースを空けておくこと推奨
 - あらかじめ、「様」「先生」などは入れておく必要あり。
 
+# ネーム幕作成
+`generate_name_curtain(output_pdf, data, bg_image_path)`
+
+csv形式データから、A4サイズのネーム幕を作る。
+
+`python3 makeNameCurtain.py`で実行できる
+
+- `name_curtain.csv` がデータで、「役職, 名前, ふりがな」
+- `name_curtain.png` が、ネーム幕の背景
+- 役職は、`fit_text_to_width_height_2()`を利用
+- あまりにも長すぎる名前は対応不可能
+- 苗字と名前はあらかじめスペースを空けておくこと推奨
+- あらかじめ、「様」「先生」などは入れておく必要あり
+- 無理やり縦書きにしているため、アルファベットや句読点、「ー」などは違和感あり
+
 # 自己紹介カード作成
 `generate_self_introduction_cards(output_pdf, data, bg_image_path)`
 
-csv形式のデータから、自己紹介カードを作る。一人あたり1ページを想定。
+csv形式のデータから、自己紹介カードを作る。1人あたり1ページを想定。
 
 `python3 makeNamePlate.py`で実行できる
 
