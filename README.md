@@ -82,5 +82,5 @@ csv形式のデータから、自己紹介カードを作る。1人あたり1ペ
 
 
 # 環境
-- python が使えて、各種ライブラリがインストールできれば大丈夫。`requirements.txt` は書いてないです……。
+- python が使えて、各種ライブラリがインストールできれば大丈夫。`pip3 install -r requirements.txt` でインストールしてください。
 - フォントデータは、デフォルトでは無料で使える`ipaexm.ttf`を同じディレクトリに入れて利用しています。（[参考](https://qiita.com/programing_diy_kanrinin/items/898634074c6ac36c3bf1)）
