@@ -32,8 +32,8 @@ def generate_name_curtain(output_pdf, data, bg_image_path):
         # ネームプレート作成
         # c.rect(width-170, 100, 120, height-200) # 長方形確認
         fit_vertical_text_to_width_height(c, title, width-170, 100, 120, height-200, "ipaexm", 80)
-        fit_text_to_height(c, name, 230, 100, height-200, "ipaexm", 100)
-        fit_text_to_height(c, furigana, 330, 200, height-350, "ipaexm", 50)
+        font_size = fit_text_to_height(c, name, 230, 100, height-200, "ipaexm", 100)
+        fit_text_to_height(c, furigana, 230 + font_size + 10, 200, height-350, "ipaexm", 50)
 
         c.showPage()
 

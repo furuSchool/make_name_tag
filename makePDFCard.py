@@ -37,26 +37,26 @@ def draw_introduce_card(c, row_data, bg_image, canvas_width, canvas_height):
     # 長方形の大きさは c.rect(x, y, 長方形の幅, 長方形の高さ)で確認できる。
     # データは、csvの列名で指定。
 
-    # c.rect(1190,910,80,80) # 確認用
-    fit_text_to_width_height(c, row_data['学部'], 100, 330, 300, 100,
-                                  "ipaexm", 80)
-    fit_text_to_width_height(c, row_data['出身地'], 150, 80, 350, 100,
-                                  "ipaexm", 80)
-    fit_text_to_width_height(c, row_data['名前'], 670, 900, 430, 100,
-                                  "ipaexm", 100)
-    fit_text_to_width(c, row_data['ふりがな'], 700, 1000, 370, "ipaexm", 50)
-    fit_text_to_width(c, row_data['所属チーム'], 1190, 910, 80, "ipaexm",
-                             100)
+    # c.rect(670, 900, 430, 100)  # 確認用
+    fit_text_to_width_height(c, row_data['学部'], 100, 330, 300, 100, "ipaexm",
+                             80)
+    fit_text_to_width_height(c, row_data['出身地'], 150, 80, 350, 100, "ipaexm",
+                             80)
+    font_size = fit_text_to_width(c, row_data['名前'], 670, 900, 430, "ipaexm",
+                                  100)
+    fit_text_to_width(c, row_data['ふりがな'], 700, 900 + font_size, 370, "ipaexm",
+                      40)
+    fit_text_to_width(c, row_data['所属チーム'], 1190, 910, 80, "ipaexm", 100)
     fit_text_to_width_height(c, row_data['趣味または特技'], 1190, 510, 240, 240,
-                                  "ipaexm", 100)
+                             "ipaexm", 100)
     fit_text_to_width_height(c, row_data['興味のある分野'], 720, 510, 350, 240,
-                                  "ipaexm", 80)
+                             "ipaexm", 80)
     fit_text_to_width_height(c, row_data['サークル'], 1550, 510, 240, 240,
-                                  "ipaexm", 80)
+                             "ipaexm", 80)
     fit_text_to_width_height(c, row_data['やりたいこと'], 720, 100, 500, 240,
-                                  "ipaexm", 80)
+                             "ipaexm", 70)
     fit_text_to_width_height(c, row_data['意気込み'], 1420, 100, 350, 240,
-                                  "ipaexm", 80)
+                             "ipaexm", 70)
 
 
 def generate_self_introduction_cards(output_pdf, data, bg_image_path):

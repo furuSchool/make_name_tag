@@ -31,17 +31,17 @@ def generate_name_plate(output_pdf, data):
         c.setFillColor(colors.black)
 
         # ネームプレート作成
-        fit_text_to_width_height_2(c, title, 50, (height-100)/3 + 160, width-100, 60, "ipaexm", 14)
-        fit_text_to_width(c, name, 100, (height-100)/3 + 40, width-200, "ipaexm", 100)
-        fit_text_to_width(c, furigana, 120, (height-100)/3 + 110, width-280, "ipaexm", 30)
+        fit_text_to_width_height_2(c, title, 50, (height-100)/3 + 160, width-100, 60, "ipaexm", 18)
+        font_size = fit_text_to_width(c, name, 100, (height-100)/3 + 40, width-200, "ipaexm", 100)
+        fit_text_to_width(c, furigana, 120, (height-100)/3 + 40 + font_size, width-280, "ipaexm", 30)
 
         # 点対称に文章を書く
         c.saveState()
         c.translate(width, (height-100)/3*4)
         c.rotate(180)
-        fit_text_to_width_height_2(c, title, 50, (height-100)/3 + 160, width-100, 60, "ipaexm", 14)
+        fit_text_to_width_height_2(c, title, 50, (height-100)/3 + 160, width-100, 60, "ipaexm", 18)
         fit_text_to_width(c, name, 100, (height-100)/3 + 40, width-200, "ipaexm", 100)
-        fit_text_to_width(c, furigana, 120, (height-100)/3 + 110, width-280, "ipaexm", 30)
+        fit_text_to_width(c, furigana, 120, (height-100)/3 + 40 + font_size, width-280, "ipaexm", 30)
         c.restoreState()
 
         c.showPage()

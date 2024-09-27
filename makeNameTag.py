@@ -17,9 +17,10 @@ def draw_business_card(c, x, y, name, furigana, title, bg_image):
 
     # c.rect(x + 90, y + card_height - 60,190,40)
     # 名刺の背景によって文字のサイズを変える。
-    fit_text_to_width_height_2(c, title, x + 90, y + card_height - 60,190,40, "ipaexm", 18)
-    fit_text_to_width(c, furigana, x + 120, y + card_height - 90, 150, "ipaexm", 15)
-    fit_text_to_width(c, name, x + 110, y + card_height - 130, 170, "ipaexm", 40)
+    fit_text_to_width_height_2(c, title, x + 90, y + card_height - 60,190,40, "ipaexm", 15)
+    font_size = fit_text_to_width(c, name, x + 110, y + card_height - 130, 170, "ipaexm", 40)
+    fit_text_to_width(c, furigana, x + 120, y + card_height - 130 + font_size, 130, "ipaexm", 15)
+    
 
 
 def generate_business_cards(output_pdf, data, bg_image_path):
