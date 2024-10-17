@@ -25,7 +25,7 @@ csv形式のデータから、A4サイズのネームプレートを作る。
 - 役職は、`fit_text_to_width_height_2()`を利用
 - あまりにも長すぎる名前は対応不可能
 - 苗字と名前はあらかじめスペースを空けておくこと推奨
-- あらかじめ、「様」「先生」などは入れておく必要あり。
+- あらかじめ、「様」「先生」などは入れておく必要あり
 
 # ネーム幕作成
 `generate_name_curtain(output_pdf, data, bg_image_path)`
@@ -47,7 +47,7 @@ csv形式データから、A4サイズのネーム幕を作る。
 
 csv形式のデータから、自己紹介カードを作る。1人あたり1ページを想定。
 
-`python3 makeNamePlate.py`で実行できる
+`python3 makePDFCard.py`で実行できる
 
 - `introduce_data.csv` がデータで、デフォルトは、名前,ふりがな,所属チーム,出身地,学部,趣味または特技,興味のある分野,サークル,やりたいこと,意気込み, がカラム名になっている
 - `introduce.png`が自己紹介カードの背景
@@ -59,7 +59,7 @@ csv形式のデータから、自己紹介カードを作る。1人あたり1ペ
 - `PngCards`というフォルダの中にpngを作成
 - 結構時間がかかる
 - poppler というツールが必要。mac なら `brew install poppler` でできる。windowsなら、調べてダウンロード
-- I LOVE PDF を使って、pdfデータをpngデータにするのが吉かも
+- I LOVE PDF などを使って、pdfデータをpngデータにするのが吉かも
 
 # その他関数
 `fit_text_to_width(c, text, x, y, max_width, font_name, max_font_size)`

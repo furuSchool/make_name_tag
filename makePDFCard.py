@@ -5,7 +5,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 import pandas as pd
 
-from function import fit_text_to_width, fit_text_to_width_height
+from function import fit_text_to_width, fit_text_to_width_height, fit_text_to_width_height_2
 
 
 def draw_introduce_card(c, row_data, bg_image, canvas_width, canvas_height):
@@ -47,12 +47,12 @@ def draw_introduce_card(c, row_data, bg_image, canvas_width, canvas_height):
     fit_text_to_width(c, row_data['ふりがな'], 700, 900 + font_size, 370, "ipaexm",
                       40)
     fit_text_to_width(c, row_data['所属チーム'], 1190, 910, 80, "ipaexm", 100)
-    fit_text_to_width_height(c, row_data['趣味または特技'], 1190, 510, 240, 240,
-                             "ipaexm", 100)
-    fit_text_to_width_height(c, row_data['興味のある分野'], 720, 510, 350, 240,
-                             "ipaexm", 80)
-    fit_text_to_width_height(c, row_data['サークル'], 1550, 510, 240, 240,
-                             "ipaexm", 80)
+    fit_text_to_width_height_2(c, row_data['趣味または特技'], 1190, 510, 240, 240,
+                             "ipaexm", 60)
+    fit_text_to_width_height_2(c, row_data['興味のある分野'], 720, 510, 350, 240,
+                             "ipaexm", 60)
+    fit_text_to_width_height_2(c, row_data['サークル'], 1550, 510, 240, 240,
+                             "ipaexm", 60)
     fit_text_to_width_height(c, row_data['やりたいこと'], 720, 100, 500, 240,
                              "ipaexm", 70)
     fit_text_to_width_height(c, row_data['意気込み'], 1420, 100, 350, 240,
