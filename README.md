@@ -61,6 +61,21 @@ csv形式のデータから、自己紹介カードを作る。1人あたり1ペ
 - poppler というツールが必要。mac なら `brew install poppler` でできる。windowsなら、調べてダウンロード
 - I LOVE PDF などを使って、pdfデータをpngデータにするのが吉かも
 
+# 名刺作成
+`generate_business_card(output_pdf, data, bg_image_path)`
+
+csv形式のデータから、名刺を作る。
+
+`python3 makeBusinessCard.py`で実行できる
+
+- `business_card.csv` がデータで、デフォルトは、役職, 大学, 名前, ふりがな, 電話番号, メアド, 
+がカラム名になっている
+- あまりにも長すぎる名前は対応不可能
+- 苗字と名前はあらかじめスペースを空けておくこと推奨
+- 1点ネームタグと異なる点として、名刺ごとに別々のPDFとして BusinessCards というフォルダ内に格納する様にしてある。
+そのため、あらかじめフォルダを作っておく必要がある。
+- デフォルトでは、機密情報を github 上に上げない様に、別ファイルに機密情報を書いている。
+
 # その他関数
 `fit_text_to_width(c, text, x, y, max_width, font_name, max_font_size)`
 
@@ -79,6 +94,10 @@ csv形式のデータから、自己紹介カードを作る。1人あたり1ペ
 - 基本的には上記と同じだが、少しだけ挙動が違う。
 - より求めている挙動をする方を使う。
 
+`ttc_to_ttf(ttc_file_path, output_dir)`
+- `ttc_file_path` にある .ttc ファイルを分割して、
+`output_dir` 内に .ttf ファイルを作成する関数。
+- 様々な日本語フォントを使いたい時などに利用する
 
 
 # 環境

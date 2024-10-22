@@ -13,4 +13,10 @@ name_plate.pdf
 name_curtain.csv
 name_curtain.pdf
 name_curtain.png
+business_card.csv
+BusinessCards
+business_card.png
+Fonts
+ttcToTtf.py
+privateInformation.py
 .DS_Store

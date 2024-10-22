@@ -1,3 +1,5 @@
 reportlab==3.6.13
 pandas==2.0.3
+fonttools
+
 # pdf2image==1.16.3

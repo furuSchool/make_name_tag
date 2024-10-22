@@ -1,4 +1,5 @@
 import re
+from fontTools.ttLib import TTCollection
 
 
 # 文字列の幅を先に指定して、フォントサイズを変えるための関数。名前のサイズ調整に利用できる。
@@ -231,3 +232,10 @@ def fit_vertical_text_to_width_height(c, text, x, y, max_width, max_height,
             current_y -= font_size  # 次の文字の位置を下にずらす
         current_x -= char_width
         current_y = y + max_height
+
+def ttc_to_ttf(ttc_file_path, output_dir):
+    ttc = TTCollection(ttc_file_path)
+    for i, font in enumerate(ttc.fonts):
+        ttf_file = f"{output_dir}/font_{i}.ttf"
+        font.save(ttf_file)
+        print(f"Saved {ttf_file}")
