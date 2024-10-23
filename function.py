@@ -1,3 +1,4 @@
+import os
 import re
 from fontTools.ttLib import TTCollection
 
@@ -234,8 +235,14 @@ def fit_vertical_text_to_width_height(c, text, x, y, max_width, max_height,
         current_y = y + max_height
 
 def ttc_to_ttf(ttc_file_path, output_dir):
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
     ttc = TTCollection(ttc_file_path)
+    
+    # 各フォントをTTF形式で保存
     for i, font in enumerate(ttc.fonts):
-        ttf_file = f"{output_dir}/font_{i}.ttf"
+        font_name = font['name'].getDebugName(1) or f"font_{i}"
+        ttf_file = os.path.join(output_dir, f"{font_name}.ttf")
         font.save(ttf_file)
         print(f"Saved {ttf_file}")
