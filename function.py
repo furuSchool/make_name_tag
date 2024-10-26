@@ -54,8 +54,15 @@ def fit_text_to_height(c, text, x, y, max_height, font_name, max_font_size):
 
 
 # 長方形の中に、文章を適切に配置してくれる関数。左揃え、中揃え
-def fit_text_to_width_height(c, text, x, y, max_width, max_height, font_name,
-                             max_font_size):
+def fit_text_to_width_height(c,
+                             text,
+                             x,
+                             y,
+                             max_width,
+                             max_height,
+                             font_name,
+                             max_font_size,
+                             alignment='left'):
     font_size = max_font_size
     c.setFont(font_name, font_size)
 
@@ -117,14 +124,26 @@ def fit_text_to_width_height(c, text, x, y, max_width, max_height, font_name,
     # Draw the lines of text
     c.setFont(font_name, font_size)
     for i, line in enumerate(lines):
-        c.drawString(x, start_y + (len(lines) - i - 1) * font_size, line)
-
+        if alignment == 'center':
+            c.drawString(
+                x +
+                (max_width - c.stringWidth(line, font_name, font_size)) / 2,
+                start_y + (len(lines) - i - 1) * font_size, line)
+        else:
+            c.drawString(x, start_y + (len(lines) - i - 1) * font_size, line)
     return font_size
 
 
 # 長方形の中に、文章を適切に配置してくれる関数。左揃え、中揃え
-def fit_text_to_width_height_2(c, text, x, y, max_width, max_height, font_name,
-                               max_font_size):
+def fit_text_to_width_height_2(c,
+                               text,
+                               x,
+                               y,
+                               max_width,
+                               max_height,
+                               font_name,
+                               max_font_size,
+                               alignment='left'):
     font_size = max_font_size
     c.setFont(font_name, font_size)
 
@@ -185,7 +204,14 @@ def fit_text_to_width_height_2(c, text, x, y, max_width, max_height, font_name,
     # Draw the lines of text
     c.setFont(font_name, font_size)
     for i, line in enumerate(lines):
-        c.drawString(x, start_y + (len(lines) - i - 1) * font_size, line)
+        if alignment == 'center':
+            c.drawString(
+                x +
+                (max_width - c.stringWidth(line, font_name, font_size)) / 2,
+                start_y + (len(lines) - i - 1) * font_size, line)
+        else:
+            c.drawString(x, start_y + (len(lines) - i - 1) * font_size, line)
+    return font_size
 
 
 def fit_vertical_text_to_width_height(c, text, x, y, max_width, max_height,

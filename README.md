@@ -83,20 +83,22 @@ csv形式のデータから、名刺を作る。
 ある幅に合うように文字サイズを変更してくれる関数。ただし、1文限定である。
 そのため、幅に対して文字数が長すぎると、とんでもなく文字サイズが小さくなる場合がある。
 
-また、任意で `alignment`に 'center' か 'right' を設定することで,、
-中揃え、右揃えができる。
+また、任意で `alignment`に 'center' か 'right' を設定することで、
+中央揃え、右揃えができる。
 
-`fit_text_to_width_height(c, text, x, y, max_width, max_height, font_name, max_font_size)`
+`fit_text_to_width_height(c, text, x, y, max_width, max_height, font_name, max_font_size, alignment='left')`
 
 ある長方形の中に文章を適切に入れてくれる。
 - 左揃え、中揃えである
-- 文字サイズの最大値以下で、長方形に収まってかつ文字サイズが最も大きくなるように文章を配置する
-- 句読点の位置や文字の切れ目は考慮しない。必要ならデータ時点で改行などをする必要がある
+- 文字サイズの最大値以下で、長方形に収まってかつ文字サイズが最も大きくなるように文章を配置する。
+- 句読点の位置や文字の切れ目は考慮しない。必要ならデータ時点で改行などをする必要がある。
 - 長方形の大きさは `c.rect(x, y, 長方形の幅, 長方形の高さ)` で確認すれば良い。
+- `alignment`に 'center' を設定することで、中央揃えができる。
 
-`fit_text_to_width_height_2(c, text, x, y, max_width, max_height, font_name, max_font_size)`
+`fit_text_to_width_height_2(c, text, x, y, max_width, max_height, font_name, max_font_size, alignment='left')`
 - 基本的には上記と同じだが、少しだけ挙動が違う。
 - より求めている挙動をする方を使う。
+- `alignment`に 'center' を設定することで、中央揃えができる。
 
 `ttc_to_ttf(ttc_file_path, output_dir)`
 - `ttc_file_path` にある .ttc ファイルを分割して、
