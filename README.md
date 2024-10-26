@@ -78,10 +78,13 @@ csv形式のデータから、名刺を作る。
 - デフォルトでは、機密情報を github 上に上げない様に、別ファイルに機密情報を書いている。
 
 # その他関数
-`fit_text_to_width(c, text, x, y, max_width, font_name, max_font_size)`
+`fit_text_to_width(c, text, x, y, max_width, font_name, max_font_size, alignment='left')`
 
 ある幅に合うように文字サイズを変更してくれる関数。ただし、1文限定である。
 そのため、幅に対して文字数が長すぎると、とんでもなく文字サイズが小さくなる場合がある。
+
+また、任意で `alignment`に 'center' か 'right' を設定することで,、
+中揃え、右揃えができる。
 
 `fit_text_to_width_height(c, text, x, y, max_width, max_height, font_name, max_font_size)`
 

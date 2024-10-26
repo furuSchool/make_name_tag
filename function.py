@@ -4,7 +4,14 @@ from fontTools.ttLib import TTCollection
 
 
 # 文字列の幅を先に指定して、フォントサイズを変えるための関数。名前のサイズ調整に利用できる。
-def fit_text_to_width(c, text, x, y, max_width, font_name, max_font_size):
+def fit_text_to_width(c,
+                      text,
+                      x,
+                      y,
+                      max_width,
+                      font_name,
+                      max_font_size,
+                      alignment='left'):
     font_size = max_font_size
     c.setFont(font_name, font_size)
 
@@ -15,7 +22,15 @@ def fit_text_to_width(c, text, x, y, max_width, font_name, max_font_size):
         c.setFont(font_name, font_size)
         text_width = c.stringWidth(text, font_name, font_size)
 
-    c.drawString(x, y, text)
+    if alignment == 'right':
+        c.drawString(x + max_width - c.stringWidth(text, font_name, font_size),
+                     y, text)
+    elif alignment == 'center':
+        c.drawString(
+            x + (max_width - c.stringWidth(text, font_name, font_size)) / 2, y,
+            text)
+    else:
+        c.drawString(x, y, text)
     return font_size
 
 
@@ -187,7 +202,8 @@ def fit_vertical_text_to_width_height(c, text, x, y, max_width, max_height,
         while (1):
             while (line_number * font_size > max_width) and font_size > 0:
                 font_size -= 0.1
-            if len(one_sentense) * font_size > (line_number_list[i]) * max_height:
+            if len(one_sentense) * font_size > (
+                    line_number_list[i]) * max_height:
                 line_number_list[i] += 1
                 line_number += 1
             else:
@@ -234,12 +250,13 @@ def fit_vertical_text_to_width_height(c, text, x, y, max_width, max_height,
         current_x -= char_width
         current_y = y + max_height
 
+
 def ttc_to_ttf(ttc_file_path, output_dir):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
     ttc = TTCollection(ttc_file_path)
-    
+
     # 各フォントをTTF形式で保存
     for i, font in enumerate(ttc.fonts):
         font_name = font['name'].getDebugName(1) or f"font_{i}"
