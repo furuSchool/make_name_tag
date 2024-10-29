@@ -109,3 +109,4 @@ csv形式のデータから、名刺を作る。
 # 環境
 - python が使えて、各種ライブラリがインストールできれば大丈夫。`pip3 install -r requirements.txt` でインストールしてください。
 - フォントデータは、デフォルトでは無料で使える`ipaexm.ttf`を同じディレクトリに入れて利用しています。（[参考](https://qiita.com/programing_diy_kanrinin/items/898634074c6ac36c3bf1)）
+- `./csv` に csv ファイル, `./png` に png ファイル, `./pdf` に作成した pdf ファイルをそれぞれ格納している
