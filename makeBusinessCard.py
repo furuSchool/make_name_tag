@@ -61,5 +61,5 @@ def generate_business_card(output_dir, data, bg_image_path):
         c.save()
 
 
-data = pd.read_csv('business_card.csv')
-generate_business_card("BusinessCards", data, "business_card.png")
+data = pd.read_csv('./csv/business_card.csv')
+generate_business_card("BusinessCards", data, "./png/business_card.png")

@@ -40,6 +40,6 @@ def generate_name_curtain(output_pdf, data, bg_image_path):
     # PDFを保存
     c.save()
 
-data = pd.read_csv('name_curtain.csv',header=None)
+data = pd.read_csv('./csv/name_curtain.csv',header=None)
 data.columns = ['title', 'name', 'furigana']
-generate_name_curtain("name_curtain.pdf", data, 'name_curtain.png')
+generate_name_curtain("./pdf/name_curtain.pdf", data, './png/name_curtain.png')

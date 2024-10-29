@@ -49,6 +49,6 @@ def generate_name_plate(output_pdf, data):
     # PDFを保存
     c.save()
 
-data = pd.read_csv('name_plate.csv',header=None)
+data = pd.read_csv('./csv/name_plate.csv',header=None)
 data.columns = ['title', 'name', 'furigana']
-generate_name_plate("name_plate.pdf", data)
+generate_name_plate("./pdf/name_plate.pdf", data)

@@ -76,5 +76,5 @@ def generate_self_introduction_cards(output_pdf, data, bg_image_path):
     c.save()
 
 
-data = pd.read_csv('introduce_data.csv')
-generate_self_introduction_cards("introduce.pdf", data, "introduce.png")
+data = pd.read_csv('./csv/introduce_data.csv')
+generate_self_introduction_cards("./pdf/introduce.pdf", data, "./png/introduce.png")

@@ -52,6 +52,6 @@ def generate_business_cards(output_pdf, data, bg_image_path):
     # PDFを保存
     c.save()
 
-data = pd.read_csv('name_tag.csv',header=None)
+data = pd.read_csv('./csv/name_tag.csv',header=None)
 data.columns = ['title', 'name', 'furigana']
-generate_business_cards("name_tag.pdf", data, "name_tag.png")
+generate_business_cards("./pdf/name_tag.pdf", data, "./png/name_tag.png")

@@ -40,5 +40,5 @@ def generate_self_introduction_cards_pmg(output_folder_path, data, bg_image_path
             os.remove(pdf_path)
 
 
-data = pd.read_csv('introduce_data.csv')
-generate_self_introduction_cards_pmg("PngCards", data, "introduce.png")
+data = pd.read_csv('./csv/introduce_data.csv')
+generate_self_introduction_cards_pmg("PngCards", data, "./png/introduce.png")
