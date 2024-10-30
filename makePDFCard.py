@@ -1,14 +1,16 @@
+import os
 from reportlab.lib import colors
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 import pandas as pd
+from makeFaceImg import make_face_img 
 
 from function import fit_text_to_width, fit_text_to_width_height, fit_text_to_width_height_2
 
 
-def draw_introduce_card(c, row_data, bg_image, canvas_width, canvas_height):
+def draw_introduce_card(c, row_data, bg_image, canvas_width, canvas_height, face_image_path = None):
     # 背景画像を描く。
     c.drawImage(bg_image, 0, 0, canvas_width, canvas_height)
 
@@ -57,7 +59,17 @@ def draw_introduce_card(c, row_data, bg_image, canvas_width, canvas_height):
                              "ipaexm", 70)
     fit_text_to_width_height(c, row_data['意気込み'], 1420, 100, 350, 240,
                              "ipaexm", 70)
-
+    
+    # (x, y, 2*r)の円
+    c.circle(330, 630, 200)
+    try:
+        # 画像を読み込み
+        face_image = ImageReader(face_image_path)
+        
+        # 画像を円のバウンディングボックス内に配置
+        c.drawImage(face_image, 330 - 200, 630 - 200, 2* 200, 2 * 200, mask='auto')
+    except Exception as e:
+        print(f"Error loading image: {e}")
 
 def generate_self_introduction_cards(output_pdf, data, bg_image_path):
     # サイズの指定
@@ -68,8 +80,25 @@ def generate_self_introduction_cards(output_pdf, data, bg_image_path):
     # 背景画像を読み込む
     bg_image = ImageReader(bg_image_path)
 
+    # 顔写真の切り取り
+    folder_path = './faces/original_img/'
+    _, _, files = next(os.walk(folder_path))
     for i, row in data.iterrows():
-        draw_introduce_card(c, row, bg_image, width, height)
+        try:
+            ori_face_image_path = f'{folder_path}/{files[i]}'
+        except IndexError:
+            ori_face_image_path = None
+        
+        # 利用法：make_face_img(image_path, output_path, size, shape, padding):
+        # size: rect なら[width, height], circle なら 半径r
+        # shape = 'rect', 'circle'
+        # padding: [上,右,下,左] に付与する割合。デフォルトは[1,1,1,1]
+        face_image_path = make_face_img(ori_face_image_path, './faces/face_img', 300, 'circle', [0.8,0.8,0.8,0.8]) 
+        
+    # PDFCard の作成e
+    for i, row in data.iterrows():
+        face_image_path = f'./faces/face_img/img{i+1}_face_0.png' # この場合は切り取った後の写真を利用している          
+        draw_introduce_card(c, row, bg_image, width, height, face_image_path)
         c.showPage()
 
     # PDFを保存

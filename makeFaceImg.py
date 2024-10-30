@@ -42,8 +42,13 @@ def make_circle_frame(image, size, face_size, padding):
     y2 = center_y + r
     circular_img = circular_image[y1:y2, x1:x2]
     circular_img = cv2.resize(circular_img, (size*2, size*2))
+
+    alpha_channel = mask[y1:y2, x1:x2]
+    alpha_channel = cv2.resize(alpha_channel, (size*2, size*2))
+
+    circular_img_with_alpha = cv2.merge((circular_img, alpha_channel))
     
-    return circular_img
+    return circular_img_with_alpha
 
 def make_rect_frame(image, size, face_size, padding):
     h, w = image.shape[:2]
@@ -133,22 +138,10 @@ def make_face_img(image_path, output_path, size, shape="rect", padding=[1, 1, 1,
         for i, face_size in enumerate(face_locations):
             face_img = make_circle_frame(image, size, face_size, padding)
             
-            output_filename = f"{output_path}/{os.path.splitext(os.path.basename(image_path))[0]}_face_{i}.jpg"
+            output_filename = f"{output_path}/{os.path.splitext(os.path.basename(image_path))[0]}_face_{i}.png"
             cv2.imwrite(output_filename, face_img)
             print(f"Saved face image as {output_filename}")
-            return f"{output_path}/{os.path.splitext(os.path.basename(image_path))[0]}_face_{i}.jpg"
+            return f"{output_path}/{os.path.splitext(os.path.basename(image_path))[0]}_face_{i}.png"
     else:
         print(f"invalid shape: {shape}")
-
-
-# 使い方（例）
-folder_path = './faces/original_img/'
-for root, dirs, files in os.walk(folder_path):
-    for path in files:
-        # 利用法：make_face_img(image_path, output_path, size, shape, padding):
-        # size: rect なら[width, height], circle なら 半径r
-        # shape = 'rect', 'circle'
-        # padding: [上,右,下,左] に付与する割合 
-
-        # make_face_img(f'./faces/original_img/{path}', './faces/face_img', [300,300])
-        make_face_img(f'./faces/original_img/{path}', './faces/face_img', 300, 'circle')
+        return None
