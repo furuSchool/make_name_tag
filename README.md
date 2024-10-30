@@ -105,6 +105,16 @@ csv形式のデータから、名刺を作る。
 `output_dir` 内に .ttf ファイルを作成する関数。
 - 様々な日本語フォントを使いたい時などに利用する
 
+`make_face_img(image_path, output_path, size, shape, padding)`
+- 画像から顔の切り抜きができる
+- `dlib`、`poppler`、`fonttools`、`cv2`、`np`
+- `shape = 'rect' or 'circle'` 顔の位置や写真の大きさを考慮しつつ、適切に長方形か円に切り取ってくれる
+- `'rect'` なら `size = [width, height]`、 `'circle'` なら `size = r（半径）`
+- `padding`：[上,右,下,左] にパディングを付与する割合。デフォルトは `[1,1,1,1]`
+    - 切り取った顔そのままだと、とても顔がデカくなるため
+- 返り値は、作成した画像のパス
+- 顔写真が必要な場合に利用する。具体的なコードは `makePDFCard.py` 参照
+
 
 # 環境
 - python が使えて、各種ライブラリがインストールできれば大丈夫。`pip3 install -r requirements.txt` でインストールしてください。

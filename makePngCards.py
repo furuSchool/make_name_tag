@@ -4,7 +4,6 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 import pandas as pd
 import os
-from pdf2image import convert_from_path
 from makePDFCard import draw_introduce_card
 
 # poppler というツールが必要みたいです。mac なら brew install でできます。windowsなら、調べてダウンロード。
@@ -26,13 +25,17 @@ def generate_self_introduction_cards_pmg(output_folder_path, data, bg_image_path
         pdf_path = f"{output_folder_path}/introduce_{i+1}.pdf"
         c = canvas.Canvas(pdf_path, pagesize=(1920, 1080))
         draw_introduce_card(c, row, bg_image, width, height)
+        
+        # 顔写真使う場合        
+        # face_image_path = f'./faces/face_img/img{i+1}_face_0.png'
+        # draw_introduce_card(c, row, bg_image, width, height, face_image_path)
+        
         c.save()
 
         # Convert the PDF to an image
         images = convert_from_path(pdf_path)
         # images = convert_from_path(pdf_path, poppler_path=poppler_path if os.name == 'nt' else None) # windowsなら必要
         
-        # Save the first page of the PDF as a PNG image
         if images:
             images[0].save(f"{output_folder_path}/introduce_{i+1}.png", "PNG")
         # Delete the PDF file after conversion

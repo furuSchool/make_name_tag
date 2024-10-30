@@ -60,8 +60,8 @@ def draw_introduce_card(c, row_data, bg_image, canvas_width, canvas_height, face
     fit_text_to_width_height(c, row_data['意気込み'], 1420, 100, 350, 240,
                              "ipaexm", 70)
     
-    # (x, y, 2*r)の円
-    c.circle(330, 630, 200)
+    # (x, y, r)の円
+    # c.circle(330, 630, 200)
     try:
         # 画像を読み込み
         face_image = ImageReader(face_image_path)
@@ -81,24 +81,23 @@ def generate_self_introduction_cards(output_pdf, data, bg_image_path):
     bg_image = ImageReader(bg_image_path)
 
     # 顔写真の切り取り
-    folder_path = './faces/original_img/'
-    _, _, files = next(os.walk(folder_path))
-    for i, row in data.iterrows():
-        try:
-            ori_face_image_path = f'{folder_path}/{files[i]}'
-        except IndexError:
-            ori_face_image_path = None
+    # folder_path = './faces/original_img/'
+    # for root, dirs, files in os.walk(folder_path):
+    #     for path in files:        
+    #         # 利用法：make_face_img(image_path, output_path, size, shape, padding):
+    #         # size: rect なら[width, height], circle なら 半径r
+    #         # shape = 'rect', 'circle'
+    #         # padding: [上,右,下,左] に付与する割合。デフォルトは[1,1,1,1]
+    #         face_image_path = make_face_img(f'{folder_path}{path}', './faces/face_img', 300, 'circle', [0.8,0.8,0.8,0.8]) 
         
-        # 利用法：make_face_img(image_path, output_path, size, shape, padding):
-        # size: rect なら[width, height], circle なら 半径r
-        # shape = 'rect', 'circle'
-        # padding: [上,右,下,左] に付与する割合。デフォルトは[1,1,1,1]
-        face_image_path = make_face_img(ori_face_image_path, './faces/face_img', 300, 'circle', [0.8,0.8,0.8,0.8]) 
-        
-    # PDFCard の作成e
+    # PDFCard の作成
     for i, row in data.iterrows():
-        face_image_path = f'./faces/face_img/img{i+1}_face_0.png' # この場合は切り取った後の写真を利用している          
-        draw_introduce_card(c, row, bg_image, width, height, face_image_path)
+        draw_introduce_card(c, row, bg_image, width, height)
+        
+        # 写真を利用したい場合
+        # face_image_path = f'./faces/face_img/img{i+1}_face_0.png' # 切り取った後の写真を利用している
+        # draw_introduce_card(c, row, bg_image, width, height, face_image_path)
+
         c.showPage()
 
     # PDFを保存
