@@ -1,7 +1,8 @@
 reportlab
 pandas
 # fonttools
-# cv2
+# opencv-python
+# face_recognition_models
 # face_recognition
 # numpy
 # pdf2image==1.16.3

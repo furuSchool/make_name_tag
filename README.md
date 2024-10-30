@@ -3,7 +3,7 @@
 
 csv形式のデータから、ネームタグを作る。A4サイズで8枚できる。
 
-`python3 makeNameTag.py`で実行できる
+`python makeNameTag.py`で実行できる
 
 - `name_tag.csv` がデータで、「役職, 名前, ふりがな」
 - `name_tag.png` が、ネームタグの背景
@@ -19,7 +19,7 @@ csv形式のデータから、ネームタグを作る。A4サイズで8枚で�
 
 csv形式のデータから、A4サイズのネームプレートを作る。
 
-`python3 makeNamePlate.py`で実行できる
+`python makeNamePlate.py`で実行できる
 
 - `name_plate.csv` がデータで、「役職, 名前, ふりがな」
 - 役職は、`fit_text_to_width_height_2()`を利用
@@ -32,7 +32,7 @@ csv形式のデータから、A4サイズのネームプレートを作る。
 
 csv形式データから、A4サイズのネーム幕を作る。
 
-`python3 makeNameCurtain.py`で実行できる
+`python makeNameCurtain.py`で実行できる
 
 - `name_curtain.csv` がデータで、「役職, 名前, ふりがな」
 - `name_curtain.png` が、ネーム幕の背景
@@ -47,7 +47,7 @@ csv形式データから、A4サイズのネーム幕を作る。
 
 csv形式のデータから、自己紹介カードを作る。1人あたり1ページを想定。
 
-`python3 makePDFCard.py`で実行できる
+`python makePDFCard.py`で実行できる
 
 - `introduce_data.csv` がデータで、デフォルトは、名前,ふりがな,所属チーム,出身地,学部,趣味または特技,興味のある分野,サークル,やりたいこと,意気込み, がカラム名になっている
 - `introduce.png`が自己紹介カードの背景
@@ -66,7 +66,7 @@ csv形式のデータから、自己紹介カードを作る。1人あたり1ペ
 
 csv形式のデータから、名刺を作る。
 
-`python3 makeBusinessCard.py`で実行できる
+`python makeBusinessCard.py`で実行できる
 
 - `business_card.csv` がデータで、デフォルトは、役職, 大学, 名前, ふりがな, 電話番号, メアド, 
 がカラム名になっている
@@ -117,7 +117,7 @@ csv形式のデータから、名刺を作る。
 
 
 # 環境
-- python が使えて、各種ライブラリがインストールできれば大丈夫。`pip3 install -r requirements.txt` でインストールしてください
-- `dlib`、`poppler`、`fonttools`、`cv2`、`np` のインストールは必要に応じて行ってください
+- python が使えて、各種ライブラリがインストールできれば大丈夫。`pip install -r requirements.txt` でインストールしてください
+- `opencv-python`、`poppler`、`fonttools`、`face_recognition_models`、`face_recognition`、`np` のインストールは必要に応じて行ってください
 - フォントデータは、デフォルトでは無料で使える`ipaexm.ttf`を同じディレクトリに入れて利用しています（[参考](https://qiita.com/programing_diy_kanrinin/items/898634074c6ac36c3bf1)）
 - `./csv` に csv ファイル, `./png` に png ファイル, `./pdf` に作成した pdf ファイルをそれぞれ格納していいます
