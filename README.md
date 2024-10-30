@@ -107,7 +107,7 @@ csv形式のデータから、名刺を作る。
 
 `make_face_img(image_path, output_path, size, shape, padding)`
 - 画像から顔の切り抜きができる
-- `dlib`、`poppler`、`fonttools`、`cv2`、`np`
+- `dlib`、`cv2`、`numpy`を必要に応じてインストールする
 - `shape = 'rect' or 'circle'` 顔の位置や写真の大きさを考慮しつつ、適切に長方形か円に切り取ってくれる
 - `'rect'` なら `size = [width, height]`、 `'circle'` なら `size = r（半径）`
 - `padding`：[上,右,下,左] にパディングを付与する割合。デフォルトは `[1,1,1,1]`
